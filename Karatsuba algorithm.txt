@@ -1,0 +1,13 @@
+Karatsuba algorithm
+
+El algoritmo de Karatsuba es un procedimiento para multiplicar números grandes eficientemente, que fue descubierto por Anatolii Alexeevitch Karatsuba en 1960 y publicado en 1962.1?2? El algoritmo consigue reducir la múltiplicación de dos números de n dígitos a como máximo {\displaystyle 3n^{\log _{2}3}\approx 3n^{1.585}} {\displaystyle 3n^{\log _{2}3}\approx 3n^{1.585}} multiplicaciones de un dígito. Es, por lo tanto, más rápido que el algoritmo clásico, que requiere n2 productos de un dígito. Si n = 210 = 1024, en particular, el cómputo final exacto es 310 = 59.049 y (210)2 = 1.048.576, respectivamente.
+
+El algoritmo de Toom-Cook es una generalización más rápida del de Karatsuba. Para un n suficientemente grande, el algoritmo de Schönhage-Strassen es mejor que el algoritmo de Karatsuba.
+
+El algoritmo de Karatsuba es un claro ejemplo del paradigma divide y vencerás, concretamente del algoritmo de partición binaria.
+
+
+
+Concepto:
+
+Esto fue para multiplicar numeros grandes cocientes mas grandes
