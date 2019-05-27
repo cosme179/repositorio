@@ -1,0 +1,114 @@
+10. Coincidencia De Patrones
+MySQL proporciona métodos de coincidencia de patrones basados en SQL estándar, así como también basados en expresiones regulares, de manera similar a las utilerías de Unix tales como vi, grep y sed.
+
+La coincidencia de patrones basada en SQL nos permite usar _ (guión bajo) para un solo caracter y % para un arbitrario número de caracteres. En MySQL, los patrones SQL no son sensibles al uso de mayúsculas y minúsculas.
+
+Es importante notar que no se usan los operadores = o < > cuando se usan los patrones SQL; en su lugar se usan los operadores LIKE y NOT LIKE.
+
+A continuación se presentan algunos ejemplos.
+
+Para encontrar los nombres que comienzan con b:
+
+mysql> SELECT * FROM mascotas WHERE nombre LIKE "b%";
++--------+-------------+---------+------+------------+---------------+
+| nombre | propietario | especie | sexo | nacimiento | fallecimiento |
++--------+-------------+---------+------+------------+---------------+
+| Buffy  | Arnoldo     | Perro   | f    | 1999-05-13 | NULL          |
++--------+-------------+---------+------+------------+---------------+
+1 row in set (0.00 sec)
+Para encontrar los nombres que finalizan con fy:
+
+mysql> SELECT * FROM mascotas WHERE nombre LIKE "%fy";
++--------+-------------+---------+------+------------+---------------+
+| nombre | propietario | especie | sexo | nacimiento | fallecimiento |
++--------+-------------+---------+------+------------+---------------+
+| Fluffy | Arnoldo     | Gato    | f    | 1999-02-04 | NULL          |
+| Buffy  | Arnoldo     | Perro   | f    | 1999-05-13 | NULL          |
++--------+-------------+---------+------+------------+---------------+
+2 rows in set (0.00 sec)
+Para encontrar nombres que contienen una s:
+
+mysql> SELECT * FROM mascotas WHERE nombre LIKE "%s%";
++--------+-------------+-----------+------+------------+---------------+
+| nombre | propietario | especie   | sexo | nacimiento | fallecimiento |
++--------+-------------+-----------+------+------------+---------------+
+| Kaiser | Diana       | Perro     | m    | 1989-08-31 | 1997-07-29    |
+| Chispa | Omar        | Ave       | f    | 1998-09-11 | NULL          |
+| Skim   | Benito      | Serpiente | m    | 2001-04-29 | NULL          |
+| Pelusa | Diana       | Hamster   | f    | 2000-03-30 | NULL          |
++--------+-------------+-----------+------+------------+---------------+
+4 rows in set (0.01 sec)
+El otro tipo de coincidencia de patrones proporcionado por MySQL hace uso de expresiones regulares. Para hacer uso de estos tipos de patrones se tienen que usar los operadores REGEXP y NOT REGEXP ( o RLIKE y NOT RLIKE, los cuáles son sinónimos).
+
+Algunas características de las expresiones regulares son:
+
+El caracter punto ( . ) coincide con cualquier caracter.
+
+Una clase de caracteres [...] coincide con cualquier caracter dentro de los paréntesis cuadrados. Por ejemplo, [abc] coincide con a, b o c. Para nombrar un rango de caracteres, se usa el guión. [a-z] coincide con cualquier letra minúscula, mientras que [0-9] coincide con cualquier digito.
+
+El caracter asterisco ( * ) coincide con cero o más instancias de lo que le preceda. Por ejemplo, x* coincide con cualquier número de caracteres x, [0-9]* coincide con cualquier número de digitos, y .* (punto asterisco) coincide con cualquier cosa.
+
+El patrón coincide si éste ocurre en cualquier parte del valor que está siendo evaluado. (Los patrones SQL coinciden únicamente en los valores completos.)
+
+Para indicar el inicio o el final de un valor que está siendo evaluado se usan los caracteres ^ y $ respectivamente.
+Para demostrar como se usan las expresiones regulares, se van a mostrar los ejemplos presentados anteriormente con el operador LIKE, ahora con el operador REGEXP.
+
+Para encontrar los nombre que inician con b:
+
+mysql> SELECT * FROM mascotas WHERE nombre REGEXP "^b";
++--------+-------------+---------+------+------------+---------------+
+| nombre | propietario | especie | sexo | nacimiento | fallecimiento |
++--------+-------------+---------+------+------------+---------------+
+| Buffy  | Arnoldo     | Perro   | f    | 1999-05-13 | NULL          |
++--------+-------------+---------+------+------------+---------------+
+1 row in set (0.01 sec)
+Antes de la versión 3.23.4 de MySQL, el operador REGEXP era sensible al uso de mayúsculas y minúsculas, así que dependiendo de la versión de MySQL con la que se está trabajando puede que obtengamos o no algún resultado en la consulta anterior. Se puede usar también la siguiente consulta para buscar los nombres que inician con la letra b, no importando si es mayúscula o minúscula.
+
+mysql> SELECT * FROM mascotas WHERE nombre REGEXP "^[bB]";
++--------+-------------+---------+------+------------+---------------+
+| nombre | propietario | especie | sexo | nacimiento | fallecimiento |
++--------+-------------+---------+------+------------+---------------+
+| Buffy  | Arnoldo     | Perro   | f    | 1999-05-13 | NULL          |
++--------+-------------+---------+------+------------+---------------+
+1 row in set (0.00 sec)
+Desde la versión 3.23.4, para forzar que el operador REGEXP sea sensible al uso de mayúsculas y minúsculas, se tiene que usar la palabra clave BINARY para hacer de una de las cadenas, una cadena binaria. Observar los resultados de la siguientes consultas.
+
+mysql> SELECT * FROM mascotas WHERE nombre REGEXP BINARY "^b";
+Empty set (0.00 sec)
+
+mysql> SELECT * FROM mascotas WHERE nombre REGEXP BINARY "^B";
++--------+-------------+---------+------+------------+---------------+
+| nombre | propietario | especie | sexo | nacimiento | fallecimiento |
++--------+-------------+---------+------+------------+---------------+
+| Buffy  | Arnoldo     | Perro   | f    | 1999-05-13 | NULL          |
++--------+-------------+---------+------+------------+---------------+
+1 row in set (0.01 sec)
+Para encontrar los nombres que finalizan con la palabra fy, haremos uso del caracter $.
+
+mysql> SELECT * FROM mascotas WHERE nombre REGEXP "fy$";
++--------+-------------+---------+------+------------+---------------+
+| nombre | propietario | especie | sexo | nacimiento | fallecimiento |
++--------+-------------+---------+------+------------+---------------+
+| Fluffy | Arnoldo     | Gato    | f    | 1999-02-04 | NULL          |
+| Buffy  | Arnoldo     | Perro   | f    | 1999-05-13 | NULL          |
++--------+-------------+---------+------+------------+---------------+
+2 rows in set (0.00 sec)
+Para encontrar los nombres que contienen una letra s, la consulta sería:
+
+mysql> SELECT * FROM mascotas WHERE nombre REGEXP "s";
++--------+-------------+-----------+------+------------+---------------+
+| nombre | propietario | especie   | sexo | nacimiento | fallecimiento |
++--------+-------------+-----------+------+------------+---------------+
+| Kaiser | Diana       | Perro     | m    | 1989-08-31 | 1997-07-29    |
+| Chispa | Omar        | Ave       | f    | 1998-09-11 | NULL          |
+| Skim   | Benito      | Serpiente | m    | 2001-04-29 | NULL          |
+| Pelusa | Diana       | Hamster   | f    | 2000-03-30 | NULL          |
++--------+-------------+-----------+------+------------+---------------+
+4 rows in set (0.00 sec)
+
+
+
+
+CONCEPTO :
+NO ME QUEDO MUY CLARO PERO AL PARECER ES LA MANERA DE USAR LOS COMANDOS SQL A LA HORA
+DE BUSCAR UN NOMBRE O AL REALIZAR UNA ACCION USANDO LIKE Y NOT LIKE

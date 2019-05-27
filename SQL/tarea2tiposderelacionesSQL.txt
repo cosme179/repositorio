@@ -1,0 +1,25 @@
+Tipos de Relaciones y sus propiedades en SQL
+Los diseños de la base de datos están estrechamente relacionados con las relaciones de la base de datos, la asociación entre dos columnas en una o más tablas.
+
+Las relaciones se definen sobre la base de columnas de clave coincidentes.
+
+En SQL, estas relaciones se definen utilizando restricciones de clave principal a clave externa.
+
+Se crea un enlace entre dos tablas donde la clave principal de una tabla se asocia con la clave externa de otra tabla utilizando las relaciones de la base de datos.
+
+Cardinalidad
+La cardinalidad es una restricción en una relación que especifica el número de instancias de entidad que una entidad específica puede estar relacionada a través de la relación. 
+
+Cuando preguntamos ¿Cuántos empleados pueden trabajar en un solo departamento? 
+¿en qué departamentos puede trabajar un empleado? estamos haciendo preguntas con respecto a la cardinalidad de la relación.
+
+Las tres clasificaciones son: uno a uno, uno a muchos y muchos a muchos.
+
+A continuación, el diagrama muestra una relación entre las líneas de pedidos y los clientes.
+
+
+CONCEPTO
+Es la manera en como se relacionan las tablas con un clave principal a una clave externa
+es una conexion o un enlace para unir tablas ya que se ocupa informacion una de la otra
+y así es como haces una extracion de datos que requieras en diferentes tablas y así
+es la manera de hacerlas que se conecten
