@@ -1,0 +1,32 @@
+//esta funcion resuelve el sudoku
+
+public statib Boolean resolver (int[.tablero)
+{
+for (int i=0; i<Dimension; i ++)
+{
+for (int j=0; j<Dimension;j++)
+{
+if (tablero[i,j] ! =0)
+continue;
+else
+{
+//calcula los elementos de la solucion, para ello revisa si es posible insertar el valor de k en las coordenadas correspondientes//
+for (int k=1;l <=9; k++)
+{
+if (esPosibleInsertar (tablero, i,j,k))
+{
+// siel valor de k es consistente entonces establece en la posicion valor de k y luego se hace una llamda recursiva 
+tablero [i,j]=K;
+Boolean b= resolver (tablero);
+
+if (b)
+return true;
+
+tablero [i,j] =0;
+
+}
+}
+//cuando se termina de correr el tablero y no se ha retornado el valor de verdadero entonces el tablero no tiene solucion //
+
+return false;
+}

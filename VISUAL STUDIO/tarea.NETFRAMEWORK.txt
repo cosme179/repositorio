@@ -1,0 +1,9 @@
+que es el .Net Framework
+
+El nombre de «.NET Framework» de principio se escucharía raro para quienes no están familiarizados con este tipo de términos, pero en realidad significa que es un conjunto de interfaces de programación de aplicaciones (API) y una biblioteca compartida de código que los desarrolladores pueden llamar a la hora de desarrollar aplicaciones. Esto es muy útil para no tener que escribir el código desde cero. En concreto el .NET Framework contiene segmentos de código para programar de manera más sencilla. Es decir, si ocupamos una función para hacer ping a otra dirección IP en la red, en vez de escribir ese código desde cero, simplemente podemos utilizar el código de la biblioteca que realiza esa función.
+
+El .NET también proporciona un entorno de ejecución de aplicaciones. Un entorno de ejecución proporciona una máquina virtual en el que las aplicaciones se ejecutan. Muchas plataformas de desarrollo proporcionan lo mismo, como Java y Ruby on Rails, por ejemplo, ambos proporcionan sus propios entornos de ejecución. En el mundo .NET, el entorno de ejecución se denomina Common Language Runtime (CLR).
+
+
+Concepto:
+Provee soluciones pre-codificadas para requerimientos comunes de los programas y gestiona la ejecución de programas escritos específicamente 

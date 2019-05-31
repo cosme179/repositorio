@@ -1,0 +1,11 @@
+QUE ES OPEN SOURCE
+
+Open Source, también llamado “Código Abierto” es un término que se utiliza para denominar a cierto tipo de software que se distribuye mediante una licencia que le permite al usuario final, si tiene los conocimientos necesarios, utilizar el código fuente del programa para estudiarlo,  modificarlo y realizar mejoras en el mismo, pudiendo incluso hasta redistribuirlo.
+
+Este tipo de software provee de características y ventajas únicas, ya que los programadores, al tener acceso al código fuente de una determinada aplicación pueden leerlo y modificarlo, y por lo tanto pueden mejorarlo, añadiéndole opciones y corrigiendo todos los potenciales problemas que pudiera encontrar, con lo que el programa una vez compilado estará mucho mejor diseñado que cuando salió de la computadora de su programador original.
+
+
+Concepto:
+
+basicamente es el codigo que nos da alguna aplicacion o programa y si nosotros tenemos el conocimiento
+podemos mejorarlo y retribuir a este con mejoras o cambios.

@@ -1,0 +1,41 @@
+
+//DEFINIMOS LA FUNCION QUICKSORT
+
+def quicksort(lista,izq,der):
+    i=izq
+    j=der
+    x=lista[(izq + der)/2]
+
+//DECLARACION DE VARIABLES DEFINIENDO CUAL ES DERECHA,IZQUIERDA Y LA LISTA//
+ 
+    while( i <= j ):
+        while lista[i]<x and j<=der:
+            i=i+1
+        while x<lista[j] and j>izq:
+            j=j-1
+//CONDICIONES USANDO WHILE SI i es menor o igual a j y le sumamos uno mientras i sea menor que x y j //
+
+        if i<=j:
+            aux = lista[i]; lista[i] = lista[j]; lista[j] = aux;
+            i=i+1;  j=j-1;
+ 
+        if izq < j:
+        quicksort( lista, izq, j );
+    if i < der:
+        quicksort( lista, i, der );
+ //imprimir la lista si se cumple la condificon del if//
+def imprimeLista(lista,tam):
+    for i in range(0,tam):
+        print lista[i]
+ 
+def leeLista():
+    lista=[]
+    cn=int(raw_input("Cantidad de numeros a ingresar: "))
+ 
+    for i in range(0,cn):
+        lista.append(int(raw_input("Ingrese numero %d : " % i)))
+    return lista
+ 
+A=leeLista()
+quicksort(A,0,len(A)-1)
+imprimeLista(A,len(A))
