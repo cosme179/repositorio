@@ -1,0 +1,24 @@
+como uso los esquemas de una base de datos
+
+
+
+Un esquema de base de datos representa la configuración lógica de todo o parte de una base de datos relacional. Puede existir de dos formas: como representación visual y como un conjunto de fórmulas conocidas como restricciones de integridad que controlan una base de datos. Estas fórmulas se expresan en un lenguaje de definición de datos, tal como SQL. Como parte de un diccionario de datos, un esquema de base de datos indica cómo las entidades que conforman la base de datos se relacionan entre sí, incluidas las tablas, las vistas, los procedimientos almacenados y mucho más.
+
+esquema lógico y físico de base de datos
+Típicamente, un diseñador de bases de datos crea un esquema de base de datos para ayudar a los programadores cuyo software interactuará con la base. Al proceso de crear un esquema de base de datos se le llama modelado de datos. Al seguir el enfoque de tres esquemas para el diseño de bases de datos, este paso seguiría la creación de un esquema conceptual. Los esquemas conceptuales se enfocan en las necesidades informativas de una organización, más que en la estructura de una base de datos.
+
+Hay dos tipos principales de esquemas de bases de datos:
+
+Un esquema lógico de base de datos expresa las restricciones lógicas que se aplican a los datos almacenados. Puede definir las restricciones de integridad, las vistas y las tablas.
+Un esquema físico de base de datos dispone cómo se almacenan los datos físicamente en un sistema de almacenamiento en términos de archivos e índices.
+En el nivel más básico, un esquema de base de datos indica qué tablas o relaciones componen la base de datos, así como los campos incluidos en cada tabla. Por lo tanto, los términos diagrama de esquema y diagrama de relaciones de entidades con frecuencia son intercambiables.
+
+Esquema en sistema de base de datos Oracle
+En el sistema de base de datos Oracle, el término esquema de base de datos, al cual también se lo conoce como "esquema SQL", tiene un significado diferente. Aquí, una base de datos puede tener esquemas múltiples (o "schemata", como se le dice elegantemente en inglés). Cada uno de ellos contiene todos los objetos creados por un usuario específico de la base de datos. Esos objetos pueden incluir tablas, vistas, sinónimos y mucho más. Algunos objetos no se pueden incluir en un esquema, tales como usuarios, contextos, roles y objetos del directorio.
+
+esquema de base de datos relacional
+Se puede conceder acceso a los usuarios para que ingresen a esquemas individuales según cada caso concreto, y la titularidad es transferible. Ya que cada objeto está asociado a un esquema particular, que sirve como una especie de espacio para nombres, es útil dar algunos sinónimos, lo cual permite a otros usuarios acceder a ese objeto sin primero consultar el esquema al que pertenece.
+
+Estos esquemas no necesariamente indican las formas en que los archivos de datos se almacenan físicamente. En lugar de ello, los objetos de esquemas se almacenan lógicamente dentro de un espacio de tablas. El administrador de la base de datos puede especificar cuánto espacio asignar a un objeto particular dentro de un archivo de datos.
+
+Por último, los esquemas y los espacios de tablas no necesariamente se alinean a la perfección: los objetos de un esquema pueden estar presentes en múltiples espacios de tablas, mientras que un espacio de tablas puede incluir objetos de varios esquemas.
